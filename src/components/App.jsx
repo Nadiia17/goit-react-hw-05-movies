@@ -1,12 +1,26 @@
-// import { useEffect, useState } from 'react';
-// import toast, { Toaster } from 'react-hot-toast';
-// import { AppContainer } from './Layout';
-// import { Searchbar } from './Searchbar/Searchbar';
-// import { searchByQuery } from './api';
-// import { ImageGallery } from './ImageGallery/ImageGallery';
-// import { Button } from './Button/Button';
-// import { Loader } from './Loader/Loader';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from 'components/Layout/Layout';
+
+const Cast = lazy(() => import('components/Cast/Cast'));
+const Reviews = lazy(() => import('components/Reviews/Reviews'));
+const Home = lazy(() => import('pages/Home/Home'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('pages/Movies/Movies'));
 
 export const App = () => {
-  return <p>Hello</p>;
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<Home />} />
+    </Routes>
+  );
 };
