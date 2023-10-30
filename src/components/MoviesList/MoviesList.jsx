@@ -25,10 +25,7 @@ const MoviesList = ({ films, query }) => {
           <StyledLink
             to={{
               pathname: `/movies/${film.id}`,
-              state: {
-                from: { pathname: location.pathname, search: location.search },
-                query: `query=${query}`,
-              },
+              state: { from: location },
             }}
           >
             {film.title}
