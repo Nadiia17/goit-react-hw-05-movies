@@ -4,7 +4,6 @@ import { Loader } from 'components/Loader/Loader';
 import { Container, Header, Link } from './Layout.styled';
 
 export const Layout = () => {
-  console.log('Rendering Layout');
   return (
     <Container>
       <Header>

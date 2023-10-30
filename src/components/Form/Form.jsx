@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { SearchForm, Input, Button } from './Form.styled';
 
 const Form = ({ searchMovies }) => {
@@ -12,8 +13,13 @@ const Form = ({ searchMovies }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    //   searchMovies(query.toLowerCase());
-    navigate(`/movies?query=${query.toLowerCase()}`);
+
+    if (query.trim() === '') {
+      toast.error('Please enter a search query.');
+    } else {
+      // searchMovies(query.toLowerCase());
+      navigate(`/movies?query=${query.toLowerCase()}`);
+    }
   };
 
   return (

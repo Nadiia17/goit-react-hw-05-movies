@@ -8,26 +8,13 @@ import {
 
 const MoviesList = ({ films, query }) => {
   const location = useLocation();
-  console.log(location);
+  //   console.log(location);
 
   return (
     <MoviesListContainer>
       {films.map(film => (
         <MovieItem key={film.id}>
-          {/* <StyledLink
-            to={{
-              pathname: `/movies/${film.id}`,
-              state: { from: location.pathname, query: query },
-            }}
-          >
-            {film.title}
-              </StyledLink> */}
-          <StyledLink
-            to={{
-              pathname: `/movies/${film.id}`,
-              state: { from: location },
-            }}
-          >
+          <StyledLink to={`/movies/${film.id}`} state={{ from: location }}>
             {film.title}
           </StyledLink>
         </MovieItem>

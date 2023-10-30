@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from 'components/api';
 import { Loader } from 'components/Loader/Loader';
 import {
@@ -7,7 +7,7 @@ import {
   List,
   ListInfo,
   LinkInfo,
-  Button,
+  LinkBtn,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
@@ -15,7 +15,7 @@ const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  console.log(location.state);
+  //   console.log(location);
 
   useEffect(() => {
     const fetchMovieDetailsFilms = () => {
@@ -52,23 +52,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      {/* <Link
-        to={{
-          pathname: location.state?.from ?? '/',
-          search: location.state?.query ? `query=${location.state.query}` : '',
-        }}
-      >
-        <Button type="button">Go back</Button>
-      </Link> */}
-
-      <Link
-        to={{
-          pathname: location.state?.from?.pathname ?? '/',
-          search: location.state?.from?.search ?? '',
-        }}
-      >
-        <Button type="button">Go back</Button>
-      </Link>
+      <LinkBtn to={location?.state?.from ?? '/'}>Go back</LinkBtn>
 
       {loading && <Loader />}
 
@@ -102,6 +86,7 @@ const MovieDetails = () => {
       <hr />
       <div>
         <h3>Additional information</h3>
+
         <ListInfo>
           <li>
             <LinkInfo to="cast">Cast</LinkInfo>
@@ -110,7 +95,7 @@ const MovieDetails = () => {
             <LinkInfo to="reviews">Reviews</LinkInfo>
           </li>
         </ListInfo>
-        <hr />
+
         <Outlet />
       </div>
     </>

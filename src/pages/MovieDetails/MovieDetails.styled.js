@@ -44,15 +44,17 @@ export const LinkInfo = styled(Link)`
   }
 `;
 
-export const Button = styled.button`
+export const LinkBtn = styled(Link)`
+  display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
   background-color: #3498db;
   border: none;
   border-radius: 5px;
+  text-align: center;
   cursor: pointer;
-  margin-bottom: 20px;
+  text-decoration: none;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -61,10 +63,5 @@ export const Button = styled.button`
 
   &:active {
     background-color: #2471a3;
-  }
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
   }
 `;
