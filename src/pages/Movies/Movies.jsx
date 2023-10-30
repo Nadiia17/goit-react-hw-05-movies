@@ -6,7 +6,7 @@ import Form from 'components/Form/Form';
 import { searchByQuery } from 'components/api';
 
 const Movies = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [searchFilms, setSearchFilms] = useState([]);
   const [loading, setLoading] = useState(false);
   const [noMoviesText, setNoMoviesText] = useState(false);

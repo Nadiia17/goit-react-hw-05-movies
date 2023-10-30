@@ -52,6 +52,15 @@ const MovieDetails = () => {
 
   return (
     <>
+      {/* <Link
+        to={{
+          pathname: location.state?.from ?? '/',
+          search: location.state?.query ? `query=${location.state.query}` : '',
+        }}
+      >
+        <Button type="button">Go back</Button>
+      </Link> */}
+
       <Link
         to={{
           pathname: location.state?.from.pathname ?? '/',
@@ -60,6 +69,7 @@ const MovieDetails = () => {
       >
         <Button type="button">Go back</Button>
       </Link>
+
       {loading && <Loader />}
 
       {movieInfo && (

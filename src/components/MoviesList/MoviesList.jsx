@@ -14,10 +14,21 @@ const MoviesList = ({ films, query }) => {
     <MoviesListContainer>
       {films.map(film => (
         <MovieItem key={film.id}>
+          {/* <StyledLink
+            to={{
+              pathname: `/movies/${film.id}`,
+              state: { from: location.pathname, query: query },
+            }}
+          >
+            {film.title}
+              </StyledLink> */}
           <StyledLink
             to={{
               pathname: `/movies/${film.id}`,
-              state: { from: location, query: `query=${query}` },
+              state: {
+                from: { pathname: location.pathname, search: location.search },
+                query: `query=${query}`,
+              },
             }}
           >
             {film.title}
