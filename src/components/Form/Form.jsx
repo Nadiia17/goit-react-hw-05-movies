@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SearchForm, Input, Button } from './Form.styled';
 
 const Form = ({ searchMovies }) => {
   const [query, setQuery] = useState('');
+  const navigate = useNavigate();
 
   const handleInputChange = event => {
     setQuery(event.target.value);
@@ -10,7 +12,8 @@ const Form = ({ searchMovies }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    searchMovies(query.toLowerCase());
+    //   searchMovies(query.toLowerCase());
+    navigate(`/movies?query=${query.toLowerCase()}`);
   };
 
   return (

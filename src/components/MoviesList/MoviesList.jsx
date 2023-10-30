@@ -6,8 +6,9 @@ import {
   StyledLink,
 } from './MoviesList.styled';
 
-const MoviesList = ({ films }) => {
+const MoviesList = ({ films, query }) => {
   const location = useLocation();
+  console.log(location);
 
   return (
     <MoviesListContainer>
@@ -16,7 +17,7 @@ const MoviesList = ({ films }) => {
           <StyledLink
             to={{
               pathname: `/movies/${film.id}`,
-              state: { from: location },
+              state: { from: location, query: `query=${query}` },
             }}
           >
             {film.title}

@@ -15,6 +15,7 @@ const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  console.log(location.state);
 
   useEffect(() => {
     const fetchMovieDetailsFilms = () => {
@@ -51,7 +52,12 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={location.state?.from ?? '/'}>
+      <Link
+        to={{
+          pathname: location.state?.from.pathname ?? '/',
+          search: location.state?.from.search ?? location.state?.query,
+        }}
+      >
         <Button type="button">Go back</Button>
       </Link>
       {loading && <Loader />}
