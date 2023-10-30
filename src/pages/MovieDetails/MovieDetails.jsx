@@ -63,8 +63,8 @@ const MovieDetails = () => {
 
       <Link
         to={{
-          pathname: location.state?.from.pathname ?? '/',
-          search: location.state?.from.search ?? location.state?.query,
+          pathname: location.state?.from?.pathname ?? '/',
+          search: location.state?.from?.search ?? location.state?.query ?? '',
         }}
       >
         <Button type="button">Go back</Button>
