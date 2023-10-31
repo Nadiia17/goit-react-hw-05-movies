@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMovieDetails } from 'components/api';
@@ -15,6 +16,7 @@ const MovieDetails = () => {
   const [movieInfo, setMovieInfo] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const backLink = useRef(location.state?.from ?? '/');
   //   console.log(location);
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <LinkBtn to={location?.state?.from ?? '/'}>Go back</LinkBtn>
+      <LinkBtn to={backLink.current}>Go back</LinkBtn>
 
       {loading && <Loader />}
 
